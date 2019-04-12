@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'react-file-upload-cc'
+import FileUpload from 'react-file-upload-cc'
 
 export default class App extends Component {
   render () {
