@@ -71,5 +71,10 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lrz": "^4.9.40",
+    "worker-loader": "^2.0.0"
+  }
 }
