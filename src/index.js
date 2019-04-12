@@ -1,10 +1,12 @@
+import 'core-js/es6/map'
+import 'core-js/es6/set'
 import React from 'react'
 import PropTypes from 'prop-types'
 import MathExtend from './math-extend'
 import styles from './styles.css'
 import classNames from 'classnames/bind'
 
-// import XhrWorker from 'worker-loader:./xhr-worker'
+// import XhrWorker from 'worker-loader:worker/xhr-worker'
 
 const FILE_CLASSNAME = 'rap-file-upload'
 
