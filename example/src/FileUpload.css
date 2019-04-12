@@ -1,0 +1,60 @@
+.item-label {
+  color: #666;
+  font-size: 12px;
+  float: left;
+  text-align: right;
+  margin-right: 12px;
+}
+.banner-image-wrap {
+  margin-top: 28px;
+  overflow: hidden;
+}
+.banner-image-wrap .upload-banner {
+  overflow: hidden;
+  position: relative;
+}
+.banner-image-wrap .banner-image {
+  width: 160px;
+  height: 90px;
+  background-color: #ecedf2;
+  position: relative;
+  margin-right: 16px;
+  float: left;
+  background-size: cover;
+  background-position: center center;
+  border: 1px solid #ecedf2;
+}
+.banner-image-wrap .banner-image-error {
+  border: 1px solid #f55252;
+}
+.banner-image-wrap .upload-btn {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.banner-image-wrap .upload-status {
+  color: #fff;
+}
+.banner-image-wrap .add-upload-btn {
+  background: url("https://n1image.hjfile.cn/res7/2018/10/24/4181b5026890a09d9a59c83a9f3853b0.png");
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+.banner-image-wrap .upload-status {
+  margin-top: 8px;
+  text-align: center;
+}
+.banner-image-wrap .upload-desc {
+  font-size: 12px;
+  color: #95a1af;
+  text-align: left;
+  line-height: 18px;
+  overflow: hidden;
+}
+.banner-image-wrap .banner-image-error-tips {
+  position: static;
+  margin-top: 19px;
+}

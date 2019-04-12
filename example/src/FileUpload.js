@@ -43,7 +43,7 @@ export default class FileUploadExample extends Component {
   beforeUploadHandler = (file, mill) => {
     let sizeLimit = 20
     const fileUpload = this.fileUploadRef
-    if (sizeLimit && typeof file.size !== 'undefined') {
+    if (sizeLimit && file && typeof file.size !== 'undefined') {
       let maxSize = sizeLimit * 1024 * 1024
       if (file.size > maxSize) {
         let msg = `图片限制${sizeLimit}M`
