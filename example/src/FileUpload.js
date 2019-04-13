@@ -109,8 +109,9 @@ export default class FileUploadExample extends Component {
     const options = {
       baseUrl: uploadUrl,
       accept: accept,
-      // useWebWorker: false,
-      chooseAndUpload: true,
+      useWebWorker: true,
+      multiple: true,
+      // chooseAndUpload: true,
       beforeUpload: this.beforeUploadHandler,
       uploadSuccess: this.uploadSuccessHandeler,
       uploadError: this.uploadErrorHandler

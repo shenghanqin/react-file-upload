@@ -5,6 +5,8 @@ import styles from './styles.css'
 import classNames from 'classnames/bind'
 // import XhrWorker from './xhr-worker'
 // import XhrWorker from 'worker-loader!./xhr-worker'
+// import XhrWorker from 'worker!./xhr-worker.js'
+import XhrWorker from 'worker#./xhr-worker.js'
 
 const FILE_CLASSNAME = 'rap-file-upload'
 
@@ -18,7 +20,7 @@ function isIOS() {
 let cx = classNames.bind(styles)
 const EMPTY_FN = () => { }
 
-export default class FileUpload extends React.Component {
+class FileUpload extends React.Component {
 
   constructor(props) {
     super(props)
@@ -27,9 +29,6 @@ export default class FileUpload extends React.Component {
 
     this.xhrList = []
     this.uploadQueue = []
-    this.uploadSuccessQueue = []
-    this.currentIEID = 0
-    this.currentXHRID = 0
   }
 
   /* 触发隐藏的input框选择 */
@@ -292,7 +291,7 @@ export default class FileUpload extends React.Component {
       uploadFail,
       uploadError,
       uploading } = this.props
-    // const worker = this.worker = new XhrWorker()
+    const worker = this.worker = new XhrWorker()
     // console.log('2323 :', 2323);
 
     // worker.addEventListener('message', resp => {
@@ -442,112 +441,114 @@ export default class FileUpload extends React.Component {
 }
 
 
-FileUpload.propTypes = {
-  /**
-   * 上传的地址
-   */
-  baseUrl: PropTypes.string.isRequired,
-  /**
-   * url 参数
-   */
-  param: PropTypes.object,
-  /**
-   * 选中即传，比btnType优先级高
-   */
-  chooseAndUpload: PropTypes.bool,
-  /**
-   * 上传按钮类型
-   */
-  btnType: PropTypes.string,
-  /**
-   * 返回数据类型
-   */
-  dataType: PropTypes.string,
-  /**
-   * 是否使用webworker
-   */
-  useWebWorker: PropTypes.bool,
-  /**
-   * 超时时间
-   */
-  timeout: PropTypes.number,
-  /**
-   * 接受的上传文件类型
-   */
-  accept: PropTypes.string,
-  /**
-   * 多文件上传
-   */
-  multiple: PropTypes.bool,
-  /**
-   * 限制多文件上传文件数
-   */
-  filesLimit: PropTypes.number,
-  /**
-   * 跨域标识
-   */
-  withCredentials: PropTypes.bool,
-  /**
-   * 请求头
-   */
-  requestHeaders: PropTypes.object,
-  /**
-   * 选择前的方法
-   */
-  beforeChoose: PropTypes.func,
-  /**
-   * 选择文件的方法
-   */
-  chooseFile: PropTypes.func,
-  /**
-   * 上传前的方法
-   */
-  beforeUpload: PropTypes.func,
-  /**
-   * 进行上传
-   */
-  doUpload: PropTypes.func,
-  /**
-   * 上传中的方法
-   */
-  uploading: PropTypes.func,
-  /**
-   * 上传成功的回调
-   */
-  uploadSuccess: PropTypes.func,
-  /**
-   * 上传失败的回调，更通用一些
-   */
-  uploadError: PropTypes.func,
-  /**
-   * 上传失败的回调2？偏内部错误？
-   */
-  uploadFail: PropTypes.func,
-  /**
-   * 有响应abort的情况
-   */
-  onabort: PropTypes.func
-}
-FileUpload.defaultProps = {
-  baseUrl: '',
-  param: null,
-  chooseAndUpload: true,
-  btnType: 'chooseBtn',
-  dataType: 'json',
-  useWebWorker: false,
-  timeout: 0,
-  accept: '*',
-  multiple: false,
-  filesLimit: 0,
-  withCredentials: false,
-  requestHeaders: null,
-  beforeChoose: EMPTY_FN,
-  chooseFile: EMPTY_FN,
-  beforeUpload: EMPTY_FN,
-  doUpload: EMPTY_FN,
-  uploading: EMPTY_FN,
-  uploadSuccess: EMPTY_FN,
-  uploadError: EMPTY_FN,
-  uploadFail: EMPTY_FN,
-  onabort: EMPTY_FN
-}
+// FileUpload.propTypes = {
+//   /**
+//    * 上传的地址
+//    */
+//   baseUrl: PropTypes.string.isRequired,
+//   /**
+//    * url 参数
+//    */
+//   param: PropTypes.object,
+//   /**
+//    * 选中即传，比btnType优先级高
+//    */
+//   chooseAndUpload: PropTypes.bool,
+//   /**
+//    * 上传按钮类型
+//    */
+//   btnType: PropTypes.string,
+//   /**
+//    * 返回数据类型
+//    */
+//   dataType: PropTypes.string,
+//   /**
+//    * 是否使用webworker
+//    */
+//   useWebWorker: PropTypes.bool,
+//   /**
+//    * 超时时间
+//    */
+//   timeout: PropTypes.number,
+//   /**
+//    * 接受的上传文件类型
+//    */
+//   accept: PropTypes.string,
+//   /**
+//    * 多文件上传
+//    */
+//   multiple: PropTypes.bool,
+//   /**
+//    * 限制多文件上传文件数
+//    */
+//   filesLimit: PropTypes.number,
+//   /**
+//    * 跨域标识
+//    */
+//   withCredentials: PropTypes.bool,
+//   /**
+//    * 请求头
+//    */
+//   requestHeaders: PropTypes.object,
+//   /**
+//    * 选择前的方法
+//    */
+//   beforeChoose: PropTypes.func,
+//   /**
+//    * 选择文件的方法
+//    */
+//   chooseFile: PropTypes.func,
+//   /**
+//    * 上传前的方法
+//    */
+//   beforeUpload: PropTypes.func,
+//   /**
+//    * 进行上传
+//    */
+//   doUpload: PropTypes.func,
+//   /**
+//    * 上传中的方法
+//    */
+//   uploading: PropTypes.func,
+//   /**
+//    * 上传成功的回调
+//    */
+//   uploadSuccess: PropTypes.func,
+//   /**
+//    * 上传失败的回调，更通用一些
+//    */
+//   uploadError: PropTypes.func,
+//   /**
+//    * 上传失败的回调2？偏内部错误？
+//    */
+//   uploadFail: PropTypes.func,
+//   /**
+//    * 有响应abort的情况
+//    */
+//   onabort: PropTypes.func
+// }
+// FileUpload.defaultProps = {
+//   baseUrl: '',
+//   param: null,
+//   chooseAndUpload: true,
+//   btnType: 'chooseBtn',
+//   dataType: 'json',
+//   useWebWorker: false,
+//   timeout: 0,
+//   accept: '*',
+//   multiple: false,
+//   filesLimit: 0,
+//   withCredentials: false,
+//   requestHeaders: null,
+//   beforeChoose: EMPTY_FN,
+//   chooseFile: EMPTY_FN,
+//   beforeUpload: EMPTY_FN,
+//   doUpload: EMPTY_FN,
+//   uploading: EMPTY_FN,
+//   uploadSuccess: EMPTY_FN,
+//   uploadError: EMPTY_FN,
+//   uploadFail: EMPTY_FN,
+//   onabort: EMPTY_FN
+// }
+
+export default FileUpload
