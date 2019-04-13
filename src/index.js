@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import MathExtend from './math-extend'
 import styles from './styles.css'
 import classNames from 'classnames/bind'
-
-// import XhrWorker from 'worker-loader:./xhr-worker'
+// import XhrWorker from './xhr-worker'
+// import XhrWorker from 'worker-loader!./xhr-worker'
 
 const FILE_CLASSNAME = 'rap-file-upload'
 
@@ -177,6 +177,7 @@ export default class FileUpload extends React.Component {
     this.files = files
 
     if (chooseAndUpload) {
+      console.log('chooseAndUpload :', chooseAndUpload, multiple, useWebWorker);
       if (multiple || useWebWorker) {
         this.createMultiProgress()
       } else {
@@ -292,6 +293,7 @@ export default class FileUpload extends React.Component {
       uploadError,
       uploading } = this.props
     // const worker = this.worker = new XhrWorker()
+    // console.log('2323 :', 2323);
 
     // worker.addEventListener('message', resp => {
     //   const { data } = resp
@@ -332,7 +334,7 @@ export default class FileUpload extends React.Component {
   commonWorkerUpload = file => {
     const { beforeUpload } = this.props
     const oneUpload = this.oneUploadRef
-    const mill = file.mill || Math.uuid()
+    const mill = file.mill || MathExtend.uuid()
 
     this.uploadQueue.push(mill)
 
@@ -375,6 +377,7 @@ export default class FileUpload extends React.Component {
     this.files = files
 
     if (multiple || useWebWorker) {
+      console.log('object :', 'createMultiProgress');
       this.createMultiProgress()
     } else {
       this.commonUpload()

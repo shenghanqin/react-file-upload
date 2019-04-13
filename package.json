@@ -1,6 +1,6 @@
 {
   "name": "react-file-upload-cc",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "文件上传模块，支持ie11，chrome等",
   "author": "https://github.com/shenghanqin/",
   "license": "MIT",
